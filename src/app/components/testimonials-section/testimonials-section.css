@@ -1,0 +1,7 @@
+.stories { border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); padding: 100px 0 34px; }
+blockquote { font-size: clamp(2.8rem, 6vw, 6rem); line-height: .98; margin: 38px 0 88px; }
+blockquote em { color: var(--violet-light); font-style: italic; }
+.story-footer { align-items: center; color: var(--paper-muted); display: flex; font-size: .7rem; justify-content: space-between; letter-spacing: .12em; text-transform: uppercase; }
+.story-mark { color: var(--orange); font-size: 1.5rem; }
+.story-footer b { color: var(--orange); font-size: 1.1rem; margin-left: 7px; }
+@media (max-width: 600px) { .stories { padding: 75px 0 26px; } blockquote { margin: 30px 0 60px; } .story-footer { gap: 18px; } .story-footer span:first-child { max-width: 140px; } }

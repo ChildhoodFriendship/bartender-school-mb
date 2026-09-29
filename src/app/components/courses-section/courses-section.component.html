@@ -1,0 +1,15 @@
+<section class="courses section-shell" id="courses">
+  <div class="section-heading">
+    <div><p class="eyebrow">Scegli il tuo prossimo passo</p><h2 class="display">Trova il tuo<br /><em>punto di partenza.</em></h2></div>
+    <p>Che tu voglia migliorare a casa o lavorare dietro a un bancone professionale, qui c'è un posto per te.</p>
+  </div>
+  <div class="course-grid">
+    @for (course of courses; track course.number) {
+      <article class="course-card">
+        <img [src]="course.image" [alt]="course.title + ', corso di bartending'" width="800" height="500" />
+        <div class="course-overlay"><span>{{ course.number }}</span><span class="course-arrow">↗</span></div>
+        <div class="course-info"><h3>{{ course.title }}</h3><p>{{ course.detail }}</p></div>
+      </article>
+    }
+  </div>
+</section>

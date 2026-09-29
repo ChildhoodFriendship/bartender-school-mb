@@ -14,16 +14,12 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'bartender-school-mb' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('bartender-school-mb');
-  });
-
-  it('should render title', () => {
+  it('should render the academy landing page', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, bartender-school-mb');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Impara il gesto.');
+    expect(compiled.querySelector('#courses')).toBeTruthy();
+    expect(compiled.querySelector('#contact')).toBeTruthy();
   });
 });

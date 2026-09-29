@@ -1,0 +1,12 @@
+.footer { border-top: 1px solid var(--line); padding: 28px 0; }
+.footer-inner { align-items: center; display: flex; justify-content: space-between; }
+.brand { align-items: center; display: flex; font-size: .68rem; font-weight: 700; gap: 8px; letter-spacing: .08em; line-height: 1.05; text-decoration: none; text-transform: uppercase; }
+.brand em { color: var(--violet-light); font-family: 'Playfair Display', Georgia, serif; font-size: .9rem; font-style: italic; letter-spacing: 0; text-transform: none; }
+.brand-mark { align-items: center; background: var(--violet); border-radius: 50%; display: flex; font-family: 'Playfair Display', Georgia, serif; font-size: .7rem; height: 32px; justify-content: center; letter-spacing: -.08em; width: 32px; }
+.copyright, .footer-links { color: var(--paper-muted); font-size: .68rem; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { position: relative; text-decoration: none; }
+.footer-links a::after { background: var(--orange); bottom: -5px; content: ''; height: 1px; left: 0; position: absolute; transform: scaleX(0); transform-origin: right; transition: transform .3s ease; width: 100%; }
+.footer-links a:hover { color: var(--paper); }
+.footer-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+@media (max-width: 650px) { .footer-inner { align-items: start; flex-wrap: wrap; gap: 20px; } .copyright { order: 3; width: 100%; } .footer-links { gap: 13px; } }

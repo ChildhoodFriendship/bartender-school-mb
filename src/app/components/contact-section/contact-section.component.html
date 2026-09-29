@@ -1,0 +1,16 @@
+<section class="contact section-shell" id="contact">
+  <div class="contact-intro"><p class="eyebrow">Quando vuoi, noi ci siamo</p><h2 class="display">Il tuo posto<br /><em>ti aspetta.</em></h2><p class="contact-copy">Siamo a Chioggia e da un anno condividiamo tecnica, creatività e passione per il mondo del bartending. Scrivici per ricevere le prossime date.</p></div>
+  <form class="contact-form" [attr.action]="formEndpoint" method="POST" (submit)="submitForm($event)">
+    <input type="hidden" name="_subject" value="Nuova richiesta da The Pour Academy" />
+    <label for="name">Il tuo nome</label>
+    <input id="name" name="name" type="text" autocomplete="name" placeholder="Come ti chiami?" required />
+    <label for="email">La tua email</label>
+    <input id="email" name="email" type="email" autocomplete="email" placeholder="nome@email.it" required />
+    <label for="message">Il tuo messaggio</label>
+    <textarea id="message" name="message" rows="3" placeholder="Raccontaci cosa stai cercando..." required></textarea>
+    <button class="button button-primary" type="submit" [disabled]="submissionState() === 'sending'">{{ submissionState() === 'sending' ? 'Invio in corso…' : 'Invia richiesta' }} <span>↗</span></button>
+    @if (submissionState() === 'success') { <p class="form-status success" aria-live="polite">Messaggio inviato. Ti risponderemo presto.</p> }
+    @if (submissionState() === 'error') { <p class="form-status error" aria-live="assertive">Non è stato possibile inviare il messaggio. Riprova tra poco.</p> }
+    @if (submissionState() === 'missing-endpoint') { <p class="form-status error" aria-live="polite">Il form è pronto. Manca solo l'ID Formspree nella configurazione.</p> }
+  </form>
+</section>

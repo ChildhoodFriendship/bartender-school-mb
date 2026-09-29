@@ -1,0 +1,11 @@
+.site-header { align-items: center; display: flex; justify-content: space-between; margin: 0 auto; max-width: var(--max-width); padding: 24px 0; position: relative; z-index: 2; }
+.brand { align-items: center; display: flex; font-size: .78rem; font-weight: 700; gap: 10px; letter-spacing: .08em; line-height: 1.05; text-decoration: none; text-transform: uppercase; }
+.brand:hover .brand-mark { transform: rotate(180deg); }
+.brand em { color: var(--violet-light); font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; font-style: italic; letter-spacing: 0; text-transform: none; }
+.brand-mark { align-items: center; background: var(--violet); border-radius: 50%; display: flex; font-family: 'Playfair Display', Georgia, serif; font-size: .85rem; height: 42px; justify-content: center; letter-spacing: -.08em; transition: transform .6s cubic-bezier(.22, 1, .36, 1); width: 42px; }
+nav { display: flex; gap: 30px; }
+nav a { color: var(--paper-muted); font-size: .83rem; text-decoration: none; transition: color .2s ease; }
+nav a:hover { color: var(--paper); }
+.header-cta { border: 1px solid var(--line); border-radius: 999px; font-size: .78rem; padding: 11px 16px; text-decoration: none; }
+.header-cta span { color: var(--orange); margin-left: 8px; }
+@media (max-width: 700px) { .site-header { padding: 18px 16px; } nav { display: none; } .header-cta { font-size: .7rem; padding: 9px 12px; } }
