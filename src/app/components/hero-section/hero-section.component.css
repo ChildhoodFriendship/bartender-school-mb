@@ -11,7 +11,8 @@ h1 span { color: var(--violet-light); font-style: italic; }
 .button-primary:hover::after { animation: shine .7s ease; }
 .button span { font-size: 1.1rem; }
 .hero-actions .button-primary { width: 190px; }
-.hero-actions .button-primary span { position: absolute; right: 21px; }
+.hero-actions .button-primary .button-label { left: 50%; position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.hero-actions .button-primary > span:not(.button-label) { position: absolute; right: 21px; }
 .text-link { border-bottom: 1px solid var(--line); color: var(--paper); font-size: .84rem; padding-bottom: 6px; text-decoration: none; }
 .text-link span { color: var(--orange); margin-left: 9px; }
 .hero-image-wrap { height: 650px; position: relative; }
