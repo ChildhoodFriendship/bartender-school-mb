@@ -25,5 +25,5 @@ import { TestimonialsSectionComponent } from './components/testimonials-section/
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  protected readonly title = 'The Pour Academy';
+  protected readonly title = 'Bartender School MB';
 }

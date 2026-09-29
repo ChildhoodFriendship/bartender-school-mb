@@ -34,3 +34,8 @@
 - Sostituito il CTA email con un form nativo collegato a Formspree tramite `fetch`, con stati accessibili di invio, successo ed errore.
 - Lasciato `REPLACE_WITH_FORMSPREE_ID` come placeholder fino alla configurazione dell'ID reale.
 - Corretto il marquee con tre pannelli a larghezza viewport per mantenere il testo centrato durante il loop.
+
+## [2026-09-29] update | Brand naming correction
+
+- Replaced the provisional `The Pour Academy` naming with the requested brand name `Bartender School MB` across title, header, hero, contact subject, footer, and app metadata.
+- Replaced the unclear phrase `Fallo tuo rituale` with `Il tuo drink, la tua firma.`.
