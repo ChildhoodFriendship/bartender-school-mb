@@ -29,7 +29,7 @@ sources: [package.json, angular.json, src/app/app.component.ts, src/app/app.rout
 
 ## Stato verificato
 
-- Il repository contiene una landing page Angular standalone per The Pour Academy, con sezioni hero, corsi, metodo, testimonianze, contatti e footer.
+- Il repository contiene una landing page Angular standalone per Bartender School MB, con sezioni hero, corsi, metodo, testimonianze, contatti e footer.
 - Il componente root compone componenti standalone separati per ogni sezione principale.
 - La configurazione abilita strict TypeScript, hydration client con event replay e prerender/SSR.
 - Il server Express serve gli artefatti browser e usa `CommonEngine` per il rendering delle richieste rimanenti.
