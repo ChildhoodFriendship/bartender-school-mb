@@ -1,41 +1,22 @@
-# Coding Project Wiki Index
+# Indice della wiki
 
-> Catalogo della conoscenza del progetto. Ultimo aggiornamento: 2026-09-29 | Pagine di contenuto: 12
-
-## Progetti
-
-- [[projects/bartender-school-mb|BartenderSchoolMb]]
-
-## Architettura
-
-- [[architecture/system-architecture|Architettura del sistema]]
-
-## Moduli e API
-
-- [[modules/application-shell|Application shell Angular]]
-- [[modules/ssr-server|Server SSR Express]]
-
-## Decisioni
-
-Nessun decision record ancora presente.
-
-## Workflow e runbook
-
-- [[runbooks/local-development|Sviluppo locale e verifica]]
-
-## Bug e debugging
-
-Nessuna diagnosi durevole presente.
-
-## Concetti e query
-
-Nessuna pagina di concetto o query mantenuta presente.
+Wiki snella del progetto `bartender-school-mb`. Le pagine riportano solo conoscenza verificabile o limiti espliciti.
 
 ## Pagine operative
 
-- [[log|Wiki log]]
-- [[agent-guide|Guida operativa per agenti]]
-- [[token-usage|Uso efficiente del contesto]]
-- [[current-status|Stato corrente]]
-- [[SCHEMA|Schema wiki]]
-- [[README|README wiki]]
+- [Schema](SCHEMA.md) — convenzioni, confidenza, fonti e forma architetturale.
+- [Guida agenti](agent-guide.md) — workflow, vincoli e verifiche.
+- [Stato corrente](current-status.md) — snapshot, lacune e punti aperti.
+- [Log](log.md) — modifiche documentali e decisioni rilevanti.
+
+## Progetto
+
+- [bartender-school-mb](projects/bartender-school-mb.md) — scopo, configurazione e comandi.
+
+## Moduli e componenti
+
+- [Catalogo componenti](modules/component-catalog.md) — shell, sezioni della landing, server SSR e integrazione contatti.
+
+## Bug
+
+- [Directory bug](bugs/.gitkeep) — vuota, pronta per schede di bug verificati.

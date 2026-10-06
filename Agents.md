@@ -10,7 +10,7 @@ La wiki canonica è [`doc/wiki/`](doc/wiki/). Prima di modificare il codice, leg
 2. [`doc/wiki/index.md`](doc/wiki/index.md)
 3. [`doc/wiki/current-status.md`](doc/wiki/current-status.md)
 4. le ultime 20–30 righe di [`doc/wiki/log.md`](doc/wiki/log.md)
-5. [`doc/wiki/agent-guide.md`](doc/wiki/agent-guide.md) e [`doc/wiki/token-usage.md`](doc/wiki/token-usage.md) quando il task richiede regole operative o indagini ampie
+5. [`doc/wiki/agent-guide.md`](doc/wiki/agent-guide.md) quando il task richiede regole operative o indagini ampie
 
 ## Regole essenziali
 

@@ -1,66 +1,42 @@
-# Coding Project Wiki Schema
+# Schema della wiki
 
 ## Scopo
 
-Knowledge base durevole e ricercabile per fatti verificati, architettura, moduli/API, contratti, decisioni, workflow, procedure operative e debugging.
+Documentazione durevole, sintetica e verificabile del progetto: struttura applicativa, componenti, vincoli, procedure e stato corrente.
 
 ## Convenzioni
 
-- Nomi file minuscoli, separati da trattini, senza spazi.
-- Ogni pagina di contenuto inizia con frontmatter YAML ed è elencata in `index.md`.
-- Usa `[[wikilinks]]` e collegamenti uscenti utili.
-- Aggiorna `updated` a ogni modifica.
-- Aggiungi ogni azione strutturale o sostanziale a `log.md`.
-- Preferisci percorsi relativi al repository, intervalli di righe, commit, issue, test e documentazione ufficiale.
-- Non memorizzare segreti, token, password, chiavi private, certificati o configurazioni cliente.
-- Mantieni le pagine sotto circa 200 righe; separa gli approfondimenti quando necessario.
+- File e cartelle in minuscolo, con trattini; nessuno spazio nei nomi nuovi.
+- Ogni pagina sostanziale usa frontmatter YAML con `title`, `updated`, `type`, `status`, `confidence` e `sources`.
+- Collegamenti relativi Markdown; aggiornare `index.md` quando cambia l'inventario.
+- Le fonti devono essere percorsi relativi al repository, comandi eseguiti o documentazione ufficiale.
+- Non inserire segreti, token, password, chiavi private, certificati o configurazioni riservate.
+- Tenere le pagine dense e brevi; separare solo contenuti realmente autonomi.
 
-## Frontmatter
+## Tipi e confidenza
 
-```yaml
----
-title: Page title
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
-type: project | architecture | module | api | decision | workflow | bug | runbook | concept | query | status | policy | guidance
-tags: [project, architecture]
-project: project-slug
-status: active | superseded | resolved | open | archived
-confidence: high | medium | low
-sources: [repository-relative/path, https://example.invalid/docs]
----
-```
+| Campo | Valori / significato |
+|---|---|
+| `type` | `project`, `module`, `status`, `guidance`, `architecture`, `policy`, `bug`, `decision` |
+| `status` | `active`, `open`, `resolved`, `superseded`, `archived` |
+| `confidence` | `high` = codice/configurazione e verifica coerenti; `medium` = supporto dal codice ma runtime incompleto; `low` = inferenza, contraddizione o dato da verificare |
 
-Usa `api` per un'interfaccia autonoma, `module` per un modulo o servizio, `concept` per un concetto durevole e `query` per un'indagine mantenuta.
+La confidenza riguarda l'evidenza più debole tra le affermazioni importanti; non certifica un deploy o un servizio esterno. Le contraddizioni vanno conservate con entrambe le fonti.
 
-## Confidenza
+## Modello architetturale documentato
 
-La confidenza descrive la qualità dell'evidenza della più debole tra le affermazioni importanti, non certifica il funzionamento in produzione.
+- **Browser:** `src/main.ts` avvia l'app Angular standalone.
+- **Shell:** `AppComponent` compone le sezioni della landing.
+- **Routing:** `src/app/app.routes.ts` contiene attualmente una tabella vuota.
+- **SSR:** `src/main.server.ts` e `src/server.ts` usano Angular SSR e Express.
+- **Integrazioni:** il form contatti invia a Formspree quando l'endpoint è configurato; non esistono datastore o API applicative possedute dal repository.
 
-- `high`: confermata da sorgente/configurazione corrente e, se rilevante, da un comando riuscito.
-- `medium`: supportata dal codice o dalla documentazione, ma runtime, servizi esterni o flusso completo non sono verificati.
-- `low`: inferita, obsoleta, contraddittoria o priva di evidenza sufficiente; indica come verificarla.
+## Precedenza delle fonti
 
-Preserva le contraddizioni con entrambe le evidenze e riduci la confidenza.
+1. Codice e configurazione correnti, verificati quando rilevante.
+2. Output di test, build e runtime.
+3. README e documentazione esplicita.
+4. Wiki precedente.
+5. Inferenze, sempre marcate come tali.
 
-## Tassonomia tag
-
-`project`, `architecture`, `module`, `api`, `database`, `deployment`, `decision`, `workflow`, `testing`, `debugging`, `performance`, `security`, `bug`, `runbook`, `dependency`, `integration`, `legacy`, `query`, `concept`, `documentation`.
-
-## Regole delle pagine
-
-- Documenta progetto, moduli importanti, API, integrazioni non ovvie, bug durevoli, procedure, concetti e decisioni.
-- Non creare pagine per dettagli banali già chiari dal codice.
-- Separa comportamento posseduto dal repository da librerie, servizi runtime, artefatti generati e configurazioni di deploy.
-- Segnala i confini non risolti come domanda aperta o lacuna, mai come fatto inventato.
-
-## Precedenza e manutenzione
-
-1. Sorgente/configurazione eseguibile corrente, verificata quando rilevante.
-2. Output di build/test e prove runtime.
-3. Tipi, mapper, serializzatori e specifiche versionate.
-4. Documentazione esplicita.
-5. Wiki esistente o contesto del maintainer.
-6. Inferenza dell'agente, sempre marcata.
-
-Quando aggiorni una pagina: controlla indice e termini correlati, leggi sorgente/configurazione/test, aggiorna pagina e link, aggiorna indice, aggiungi una voce concisa al log e riporta i blocchi onestamente.
+La presenza di una dipendenza prova solo che è dichiarata, non che il flusso completo o il deploy funzionino.
