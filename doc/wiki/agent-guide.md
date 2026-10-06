@@ -1,51 +1,75 @@
 ---
 title: Guida operativa per agenti
+created: 2026-10-06
 updated: 2026-10-06
 type: guidance
+tags: [guidance, workflow, documentation, security]
+project: bartender-school-mb
 status: active
 confidence: high
-sources: [Agents.md, package.json, angular.json, SCHEMA.md]
+sources: [Agents.md, SCHEMA.md, package.json, angular.json]
 ---
 
 # Guida operativa per agenti
 
-## Prima di modificare
+Contratto operativo per task sicuri, piccoli, verificabili e riprendibili.
 
-1. Leggere `SCHEMA.md`, `index.md`, `current-status.md` e le ultime 20–30 righe di `log.md`.
-2. Eseguire `git status --short --branch` e trattare il diff preesistente come del maintainer.
-3. Cercare definizione e usi del simbolo prima di editarlo; leggere configurazione e test pertinenti.
-4. Chiarire outcome, ambito, vincoli e criterio di accettazione. Se l'esito è chiaro ma l'implementazione è aperta, scegliere la modifica minima.
+## 1. Preflight obbligatorio
 
-## Regole di modifica
+Prima di modificare la repo:
+
+1. Eseguire `git status`.
+2. Se ci sono modifiche locali non committate, fermarsi e comunicarlo; non sovrascriverle.
+3. Se il working tree è pulito, eseguire `git fetch` e `git pull --ff-only` sul branch corrente.
+4. Se pull fallisce o i branch sono divergenti, non risolvere autonomamente: mostrare lo stato e attendere.
+5. Lavorare su un branch `hermes/<task>`, mai direttamente su `main`.
+
+Poi leggere `SCHEMA.md`, `index.md`, `current-status.md` e le ultime 20–30 righe di `log.md`. Cercare definizioni e usi dei simboli, quindi leggere sorgenti, configurazione e test pertinenti.
+
+## 2. Contratto del task
+
+Chiarire outcome, ambito, vincoli e acceptance check. Se l'esito è chiaro ma l'implementazione è aperta, scegliere la modifica minima e dichiarare l'assunzione. Chiedere chiarimenti solo quando interpretazioni diverse cambiano file o comportamento. Distinguere modifiche visuali, behavior-preserving e behavior-changing.
+
+Le richieste sul repository sono operative per default: ispezionare, modificare e verificare invece di limitarsi alla spiegazione. Se manca evidenza runtime per una correzione sicura, usare solo log diagnostici mirati e identificabili oppure fermarsi; non introdurre comportamento speculativo.
+
+## 3. Disciplina delle modifiche
 
 - Toccare solo i file necessari; niente refactor estranei.
-- Non fare commit, push, reset distruttivi o riscritture della history senza richiesta esplicita.
-- Non sovrascrivere modifiche locali.
-- Preservare stile Angular/TypeScript, componenti standalone e `ChangeDetectionStrategy.OnPush`.
-- Usare `camelCase` per variabili e metodi; cercare riuso prima di creare nuove funzioni.
-- Ogni nuovo componente va in una sottocartella propria con template e stile coerenti.
+- Preservare stile Angular/TypeScript, componenti standalone e confini esistenti.
+- Usare `camelCase` per variabili e metodi; preservare esattamente i contratti esterni.
+- Dare a ogni nuovo child component una sottocartella propria.
+- Dichiarare modificatori di accesso espliciti quando lo stile/framework lo consente.
+- Cercare riuso prima di creare una funzione; mantenere un solo percorso canonico.
 - Controllare `package.json` prima di aggiungere import o dipendenze.
-- Non introdurre dati, endpoint, claim o proprietà di servizi esterni non verificati.
-- Non documentare né inserire segreti, token, password, chiavi o endpoint privati.
+- Non eseguire commit, push o riscritture della history salvo richiesta esplicita dell'utente.
+- Non inserire credenziali, token, password, chiavi o endpoint privati nella wiki.
 
-## Verifica
+Se in futuro vengono introdotti realtime, subscription, dialog o servizi esterni, tracciare caller, effetti, transizioni e cleanup prima di modificare il lifecycle. Non mantenere vecchi e nuovi percorsi in parallelo.
 
-Eseguire il check più stretto, poi i gate pertinenti:
+## 4. Verifica
+
+Eseguire prima il check più stretto, poi i gate pertinenti:
 
 - `npm test -- --watch=false --browsers=ChromeHeadless`
 - `npm run build`
-- `npm start` e smoke test browser quando cambia la UI
+- `npm start` e smoke test browser per modifiche UI o runtime
 
-Non dichiarare lint riuscito: `package.json` non contiene uno script `lint`. La build non prova da sola il comportamento runtime né un deploy remoto.
+`npm run lint` non è disponibile in questo repository perché lo script non è dichiarato. Una build riuscita non prova il comportamento runtime, servizi esterni o deploy.
 
-## Manutenzione wiki
+Riportare solo risultati osservati. Il report finale usa **Changed**, **Verified**, **Blocked/remaining** e nomina i rischi manuali o ambientali.
 
-Dopo una modifica sostanziale aggiornare pagina pertinente, `index.md` se cambia l'inventario e `log.md` con evidenze concise. Ridurre la confidenza o annotare una lacuna quando la verifica è incompleta. Fatti temporanei vanno in `current-status.md`; regole durevoli qui; storia in `log.md`.
+## 5. Manutenzione della wiki
 
-## Integrazioni future
+Dopo una modifica sostanziale:
 
-Prima di introdurre realtime, dialog, persistenza o servizi esterni tracciare caller, effetti e contratti. Mantenere un solo lifecycle path, gestire cleanup e transizioni esplicitamente e verificare i confini senza assumere proprietà del servizio.
+1. Aggiornare la pagina progetto, modulo o stato pertinente.
+2. Riparare o aggiungere link utili.
+3. Aggiornare `index.md` se cambiano pagine o categorie.
+4. Aggiungere una voce concisa a `log.md` con evidenze.
+5. Ridurre `confidence` o aggiungere una domanda aperta se la verifica è incompleta.
 
-## Chiusura
+La guida durevole resta qui, i fatti nelle pagine specifiche, lo stato temporaneo in `current-status.md` e la storia in `log.md`.
 
-Eseguire `git diff --check` e `git status --short --branch`. Il report deve separare **Changed**, **Verified** e **Blocked/remaining**, citando risultati realmente osservati e rischi residui.
+## 6. Handoff
+
+Prima di finire eseguire `git status --short --branch` e `git diff --check`. Separare modifiche dell'agente e modifiche preesistenti. Non dichiarare completato un artefatto finché acceptance check e rischi residui non sono espliciti.

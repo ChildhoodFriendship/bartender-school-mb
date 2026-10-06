@@ -2,41 +2,52 @@
 
 ## Scopo
 
-Documentazione durevole, sintetica e verificabile del progetto: struttura applicativa, componenti, vincoli, procedure e stato corrente.
+Knowledge base durevole e ricercabile per fatti verificati, architettura, componenti, workflow, stato e debugging del progetto.
 
 ## Convenzioni
 
-- File e cartelle in minuscolo, con trattini; nessuno spazio nei nomi nuovi.
-- Ogni pagina sostanziale usa frontmatter YAML con `title`, `updated`, `type`, `status`, `confidence` e `sources`.
-- Collegamenti relativi Markdown; aggiornare `index.md` quando cambia l'inventario.
-- Le fonti devono essere percorsi relativi al repository, comandi eseguiti o documentazione ufficiale.
-- Non inserire segreti, token, password, chiavi private, certificati o configurazioni riservate.
-- Tenere le pagine dense e brevi; separare solo contenuti realmente autonomi.
+- Nomi file minuscoli, con trattini e senza spazi.
+- Ogni pagina di contenuto inizia con frontmatter YAML.
+- Ogni pagina va aggiunta a `index.md`; ogni modifica sostanziale va registrata in `log.md`.
+- Usare link Markdown relativi o `[[wikilinks]]` espliciti verso pagine esistenti.
+- Aggiornare `updated` a ogni modifica.
+- Preferire evidenze: sorgenti, configurazione, test, comandi e documentazione ufficiale.
+- Non memorizzare segreti, token, password, chiavi private o credenziali.
+- Tenere le pagine sotto circa 200 righe; dividere solo gli approfondimenti autonomi.
+- Tenere note temporanee fuori dalle pagine durevoli, salvo che cambino la conoscenza del progetto.
 
-## Tipi e confidenza
+## Frontmatter
 
-| Campo | Valori / significato |
-|---|---|
-| `type` | `project`, `module`, `status`, `guidance`, `architecture`, `policy`, `bug`, `decision` |
-| `status` | `active`, `open`, `resolved`, `superseded`, `archived` |
-| `confidence` | `high` = codice/configurazione e verifica coerenti; `medium` = supporto dal codice ma runtime incompleto; `low` = inferenza, contraddizione o dato da verificare |
+```yaml
+---
+title: Titolo pagina
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+type: project | module | architecture | api | decision | workflow | bug | runbook | guidance | status | policy
+tags: [project, documentation]
+project: bartender-school-mb
+status: active | superseded | resolved | open | archived
+confidence: high | medium | low
+sources: [percorso/relativo, comando o URL]
+---
+```
 
-La confidenza riguarda l'evidenza più debole tra le affermazioni importanti; non certifica un deploy o un servizio esterno. Le contraddizioni vanno conservate con entrambe le fonti.
+## Confidenza
 
-## Modello architetturale documentato
+`confidence` misura la qualità dell'evidenza, non la certezza soggettiva dell'agente e non certifica il funzionamento in produzione.
 
-- **Browser:** `src/main.ts` avvia l'app Angular standalone.
-- **Shell:** `AppComponent` compone le sezioni della landing.
-- **Routing:** `src/app/app.routes.ts` contiene attualmente una tabella vuota.
-- **SSR:** `src/main.server.ts` e `src/server.ts` usano Angular SSR e Express.
-- **Integrazioni:** il form contatti invia a Formspree quando l'endpoint è configurato; non esistono datastore o API applicative possedute dal repository.
+- `high`: confermata da codice/configurazione corrente e, quando rilevante, da un comando riuscito.
+- `medium`: supportata dal codice o dalla documentazione, ma runtime, servizi esterni o flusso completo non sono verificati.
+- `low`: inferita, obsoleta, contraddittoria o dipendente da evidenza mancante; indicare come verificarla.
 
-## Precedenza delle fonti
+Usare il livello più basso applicabile all'affermazione importante più debole. Conservare le contraddizioni con entrambe le fonti.
 
-1. Codice e configurazione correnti, verificati quando rilevante.
-2. Output di test, build e runtime.
-3. README e documentazione esplicita.
-4. Wiki precedente.
-5. Inferenze, sempre marcate come tali.
+## Regole delle pagine
 
-La presenza di una dipendenza prova solo che è dichiarata, non che il flusso completo o il deploy funzionino.
+Creare pagine per progetto, moduli importanti, integrazioni non ovvie, bug durevoli, procedure ripetibili, decisioni e stato. Non documentare dettagli banali già chiari dal codice. Distinguere sempre ciò che possiede il repository da librerie, servizi esterni, ambienti e artefatti generati.
+
+## Manutenzione e precedenza
+
+Quando si aggiorna una pagina: controllare indice e termini correlati, leggere sorgente/configurazione/test, aggiornare pagina e link, aggiornare indice, aggiungere una voce concisa al log e dichiarare i blocchi.
+
+In caso di conflitto prevalgono: codice/configurazione corrente verificati; output di build/test/runtime; documentazione esplicita; wiki; inferenze, sempre marcate.

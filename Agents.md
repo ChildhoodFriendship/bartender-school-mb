@@ -15,6 +15,8 @@ La wiki canonica è [`doc/wiki/`](doc/wiki/). Prima di modificare il codice, leg
 ## Regole essenziali
 
 - Ispezionare `git status --short --branch`, sorgenti, configurazione e test prima di agire.
+- Prima di modificare la repo, eseguire `git status`. Se ci sono modifiche locali non committate, fermarsi e comunicarlo. Se il working tree è pulito, eseguire `git fetch` e `git pull --ff-only` sul branch corrente; se il pull fallisce o i branch sono divergenti, mostrare lo stato e attendere.
+- Lavorare su un branch `hermes/<task>`, non direttamente su `main`.
 - Trattare modifiche preesistenti come del maintainer.
 - Applicare il cambiamento minimo e non fare refactor estranei.
 - Non creare commit, push, reset distruttivi o riscritture della history senza richiesta esplicita.

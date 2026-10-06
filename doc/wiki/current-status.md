@@ -1,7 +1,10 @@
 ---
 title: Stato corrente
+created: 2026-10-06
 updated: 2026-10-06
 type: status
+tags: [status, project, testing]
+project: bartender-school-mb
 status: active
 confidence: high
 sources: [package.json, angular.json, src/app/app.component.ts, src/app/app.component.spec.ts, src/server.ts, src/app/components/contact-section/contact-section.component.ts]
@@ -9,29 +12,36 @@ sources: [package.json, angular.json, src/app/app.component.ts, src/app/app.comp
 
 # Stato corrente
 
-## Snapshot verificato
+> Snapshot documentale del 2026-10-06. Descrive evidenze del repository, non una certificazione di release.
 
-| Area | Stato |
+## Snapshot del repository
+
+| Voce | Valore osservato |
 |---|---|
-| Progetto | Landing page Angular standalone `bartender-school-mb` |
-| Framework | Angular 19.2; TypeScript 5.7; RxJS 7.8 |
-| Rendering | Browser, SSR e prerender configurati |
-| Server | Express con `CommonEngine`; `PORT` oppure `4000` |
-| Test | Karma/Jasmine; due spec nel test del root component |
+| Applicazione | Landing page Angular standalone `bartender-school-mb` |
+| Framework | Angular 19.2, TypeScript 5.7, RxJS 7.8 |
+| Rendering | Browser, SSR e prerender configurati in `angular.json` |
+| Server | Express con Angular `CommonEngine`; `PORT` oppure `4000` |
 | Routing | `Routes = []` |
+| Test | Karma/Jasmine; due spec del root component |
 | Integrazione | Formspree con endpoint placeholder |
 
-La landing compone header, hero, corsi, metodo/about, testimonianze, contatto e footer. Le immagini sono URL Unsplash temporanei.
+La shell compone header, hero, corsi, metodo/about, testimonianze, contatto e footer. Le immagini sono URL Unsplash temporanei.
 
-## Verifiche della migrazione
+## Verifica della baseline
 
-- La struttura richiesta è stata ricostruita sotto `doc/wiki/`.
-- I comandi di progetto non sono stati rieseguiti durante questa migrazione documentale.
-- Non risultano script `lint` in `package.json`.
+La configurazione del progetto dichiara `npm test` e `npm run build`; questa migrazione riguarda soltanto documentazione e non riesegue i gate applicativi. Non esiste uno script `lint` in `package.json`.
 
-## Limiti e punti aperti
+## Limiti e lacune
 
 - Sostituire immagini e copy dimostrativi con asset e contenuti approvati.
-- Configurare l'ID reale al posto di `REPLACE_WITH_FORMSPREE_ID` in `contact-section.component.ts`.
+- Configurare l'ID reale al posto di `REPLACE_WITH_FORMSPREE_ID` nel componente contatti.
 - Non sono verificati deploy remoto, dominio, endpoint Formspree reale o smoke test browser.
+- Non sono presenti datastore, API applicative, autenticazione o procedure di deploy nel repository.
 - Aggiungere route, servizi e contratti dati solo quando richiesti dal prodotto.
+
+## Prossimi passi osservabili
+
+1. Approvare asset e contenuti pubblici.
+2. Configurare e verificare il form Formspree.
+3. Eseguire test headless, build e smoke test dopo modifiche di comportamento.

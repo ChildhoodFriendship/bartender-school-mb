@@ -1,10 +1,11 @@
 # Log della wiki
 
-Formato: `## [YYYY-MM-DD] action | subject`. Voci sintetiche; non è un changelog completo dell'applicazione.
+Formato: `## [YYYY-MM-DD] action | subject`. Azioni ammesse: `create`, `update`, `verify`, `archive`, `lint`, `query`.
 
-## [2026-10-06] create | Wiki snella del progetto
+## [2026-10-06] update | Migrazione dalla wiki di esempio
 
-- Ridotta `doc/wiki/` alla struttura richiesta: schema, guida agenti, stato, indice, log, catalogo componenti, pagina progetto e directory bug.
-- Estratti i vincoli Angular/SSR, il flusso del form e i limiti verificabili dal codice corrente.
-- Rimossi dalla nuova wiki pagine obsolete, template e categorie non richieste.
-- Nessun test applicativo rieseguito: la modifica riguarda esclusivamente la documentazione.
+- Mantenute convenzioni di frontmatter, confidenza, fonti, manutenzione, orientamento degli agenti e verifica.
+- Sostituiti nomi, architettura, moduli, comandi e stato del progetto di riferimento con evidenze di `bartender-school-mb`.
+- Conservato il nucleo compatto: schema, guida, stato, progetto, catalogo componenti, log e area bug.
+- Aggiunto il preflight Git richiesto: working tree pulito, `fetch`/`pull --ff-only` e branch `hermes/<task>`.
+- Eliminati i materiali di esempio e il file di istruzioni temporaneo.

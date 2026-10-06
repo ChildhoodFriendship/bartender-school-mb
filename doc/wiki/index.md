@@ -1,22 +1,22 @@
 # Indice della wiki
 
-Wiki snella del progetto `bartender-school-mb`. Le pagine riportano solo conoscenza verificabile o limiti espliciti.
+Catalogo compatto della conoscenza durevole del progetto `bartender-school-mb`. Le pagine riportano fatti verificabili, convenzioni e limiti espliciti.
 
 ## Pagine operative
 
-- [Schema](SCHEMA.md) — convenzioni, confidenza, fonti e forma architetturale.
-- [Guida agenti](agent-guide.md) — workflow, vincoli e verifiche.
-- [Stato corrente](current-status.md) — snapshot, lacune e punti aperti.
-- [Log](log.md) — modifiche documentali e decisioni rilevanti.
+- [SCHEMA](SCHEMA.md) — formato pagine, confidenza, fonti e manutenzione.
+- [Guida agenti](agent-guide.md) — preflight Git, workflow, vincoli e verifiche.
+- [Stato corrente](current-status.md) — snapshot, lacune e prossimi passi.
+- [Log](log.md) — storico sintetico delle modifiche documentali.
 
 ## Progetto
 
-- [bartender-school-mb](projects/bartender-school-mb.md) — scopo, configurazione e comandi.
+- [bartender-school-mb](projects/bartender-school-mb.md) — scopo, configurazione, comandi e vincoli.
 
-## Moduli e componenti
+## Moduli
 
-- [Catalogo componenti](modules/component-catalog.md) — shell, sezioni della landing, server SSR e integrazione contatti.
+- [Catalogo componenti](modules/component-catalog.md) — shell, sezioni standalone, contatto e SSR.
 
 ## Bug
 
-- [Directory bug](bugs/.gitkeep) — vuota, pronta per schede di bug verificati.
+- [Area bug](bugs/.gitkeep) — directory vuota pronta per diagnosi verificate.
